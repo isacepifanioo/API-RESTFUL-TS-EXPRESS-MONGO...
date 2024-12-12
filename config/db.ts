@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 async function connect() {
   const uri = "mongodb://localhost:27017/apiRestFul";
   try {
@@ -13,6 +14,5 @@ async function connect() {
     }
   }
 }
-
 
 export default connect;

@@ -1,17 +1,23 @@
 import express from "express";
 import config from 'config'
 
-
+import logger from '../config/logges'
 import connect from '../config/db'
 
-const app = express()
+import morganMiddleware from "./middleware/morganMiddleware";
 
+import router from "./router";
+
+const app = express()
+const port = config.get<number>('port')
+
+app.use(morganMiddleware)
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-const port = config.get('port')
+app.use('/api', router)
 
 app.listen(port, () => {
-    console.log('Servidor aberto com sucesso');
+    logger.info('Servidor aberto com sucesso');
     connect()
 })

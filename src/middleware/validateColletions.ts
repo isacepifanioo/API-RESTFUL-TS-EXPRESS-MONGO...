@@ -16,8 +16,9 @@ export const ValidationColletions = () => {
         }
         return true;
       }),
-    body('description').isString().withMessage("O valor precisa ser uma string"),
-    body("director").isString().withMessage("O nome do diretor é obrigatório."),
+    body("description")
+      .isString()
+      .withMessage("O valor precisa ser uma string"),
     body("poster").isURL().withMessage("A imagem precisa ser uma URL."),
   ];
 };
